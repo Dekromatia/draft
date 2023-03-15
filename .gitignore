@@ -161,4 +161,4 @@ cython_debug/
 .vagrant/
 node_modules/
 svg,
-._TRASH/
+_TRASH/
