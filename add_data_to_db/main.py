@@ -1,17 +1,27 @@
 import os
 import psycopg2
 
+# from config import host, user, password, db_name
+
 conn = psycopg2.connect(
         host="localhost",
         database="stamp_db",
-        user=os.environ['DB_USERNAME'],
-        password=os.environ['DB_PASSWORD'])
+        user= "postgres",
+        password="1111")
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
-# Execute a command: this creates a new table
+# cur.execute('CREATE DATABASE stamp_db;')
+
+# Execute a command: this creates a new table sta
+cur.execute('DROP TABLE IF EXISTS image;')
+cur.execute('DROP TABLE IF EXISTS model_3d;')
+cur.execute('DROP TABLE IF EXISTS stamp;')
+cur.execute('DROP TABLE IF EXISTS artifact;')
+cur.execute('DROP TABLE IF EXISTS manufact;')
 cur.execute('DROP TABLE IF EXISTS site;')
+
 cur.execute('CREATE TABLE site (ID smallint PRIMARY KEY,'
             'Name varchar (150) NOT NULL,'
             'Latitude numeric (7,5),'
@@ -19,13 +29,13 @@ cur.execute('CREATE TABLE site (ID smallint PRIMARY KEY,'
             )
 
 # Insert data into the table
-f_site = open('./tables_csv/Site.csv','r')
+f_site = open('./tables_csv/Site.csv','r', encoding="utf8")
 next(f_site)
 cur.copy_from(f_site, 'site', sep=';', null='')
 f_site.close()
 
 
-cur.execute('DROP TABLE IF EXISTS manufact;')
+# cur.execute('DROP TABLE IF EXISTS manufact;')
 cur.execute('CREATE TABLE manufact (id smallint PRIMARY KEY,'
             'center varchar (150) NOT NULL,'
             'latitude numeric (7,5),'
@@ -33,13 +43,13 @@ cur.execute('CREATE TABLE manufact (id smallint PRIMARY KEY,'
             )
 
 # Insert data into the table
-f_m = open('./tables_csv/Manufact.csv','r')
+f_m = open('./tables_csv/Manufact.csv','r', encoding="utf8")
 next(f_m)
 cur.copy_from(f_m, 'manufact', sep=';', null='')
 f_m.close()
 
 
-cur.execute('DROP TABLE IF EXISTS artifact;')
+# cur.execute('DROP TABLE IF EXISTS artifact;')
 cur.execute('CREATE TABLE artifact (id smallint PRIMARY KEY,'
             'site_id smallint NOT NULL REFERENCES site(id),'
             'manufact_id smallint NOT NULL REFERENCES manufact(id),'
@@ -50,7 +60,8 @@ cur.execute('CREATE TABLE artifact (id smallint PRIMARY KEY,'
             'field_id varchar (40) UNIQUE,'
             'depository varchar (40),'
             'depository_id varchar (40) UNIQUE,'
-            'deposcription text,'
+            'description text,'
+        #     'deposcription text,'
             'artif_g varchar (15),'
             'preservation varchar (15),'
             'munsell_hue varchar (7),'
@@ -61,13 +72,13 @@ cur.execute('CREATE TABLE artifact (id smallint PRIMARY KEY,'
             )
 
 # Insert data into the table
-f_a = open('./tables_csv/Artifact.csv','r')
+f_a = open('./tables_csv/Artifact.csv','r', encoding="utf8")
 next(f_a)
 cur.copy_from(f_a, 'artifact', sep=';', null='')
 f_a.close()
 
 
-cur.execute('DROP TABLE IF EXISTS stamp;')
+# cur.execute('DROP TABLE IF EXISTS stamp;')
 cur.execute('CREATE TABLE stamp (id smallint PRIMARY KEY,'
             'artifact_id smallint NOT NULL REFERENCES artifact(id),'
             'position varchar (10),'
@@ -94,12 +105,12 @@ cur.execute('CREATE TABLE stamp (id smallint PRIMARY KEY,'
             )
 
 # Insert data into the table
-f_st = open('./tables_csv/Stamp.csv','r')
+f_st = open('./tables_csv/Stamp.csv','r', encoding='UTF-8')
 next(f_st)
 cur.copy_from(f_st, 'stamp', sep=';', null='')
 f_st.close()
 
-cur.execute('DROP TABLE IF EXISTS model_3d;')
+# cur.execute('DROP TABLE IF EXISTS model_3d;')
 cur.execute('set datestyle to DMY;')
 cur.execute('CREATE TABLE model_3d (id char(6) PRIMARY KEY,'
             'stamp_id smallint NOT NULL REFERENCES stamp(id),'
@@ -115,13 +126,13 @@ cur.execute('CREATE TABLE model_3d (id char(6) PRIMARY KEY,'
             )
 
 # Insert data into the table
-f_st = open('./tables_csv/3DModel.csv','r')
+f_st = open('./tables_csv/3DModel.csv','r',encoding="utf8")
 next(f_st)
 cur.copy_from(f_st, 'model_3d', sep=';', null='')
 f_st.close()
 
 
-cur.execute('DROP TABLE IF EXISTS image;')
+# cur.execute('DROP TABLE IF EXISTS image;')
 cur.execute('CREATE TABLE image (id smallint PRIMARY KEY,'
             'stamp_id smallint NOT NULL REFERENCES stamp(id),'
             'type varchar (40),'
@@ -131,11 +142,10 @@ cur.execute('CREATE TABLE image (id smallint PRIMARY KEY,'
             )
 
 # Insert data into the table
-f_st = open('./tables_csv/Image.csv','r')
+f_st = open('./tables_csv/Image.csv','r',encoding="utf8")
 next(f_st)
 cur.copy_from(f_st, 'image', sep=';', null='')
 f_st.close()
-
 
 conn.commit()
 
