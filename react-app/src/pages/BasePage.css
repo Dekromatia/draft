@@ -1,0 +1,59 @@
+.accordion-item{
+    --bs-accordion-border-width:0;
+    --bs-accordion-border-color:#0b0b0b;
+    /* --bs-accordion-bg:#403634; */
+}
+
+
+
+.accordion-button {
+    background-color: #343a40 !important;
+
+}
+.accordion-body{
+    --bs-accordion-body-padding-x: 0rem;
+    --bs-accordion-body-padding-y: 0rem;
+    --bs-accordion-inner-border-radius: 0rem;
+}
+
+.accordion-button{
+    --bs-accordion-btn-color: #fff;
+}
+
+.accordion-button:focus {
+box-shadow: none;
+color:aliceblue;
+}
+/* .accordion-item:first-of-type .accordion-button{
+    color:aliceblue;
+} */
+.button:focus:not(:focus-visible){
+    color:aliceblue;
+}
+
+.accordion-button:not(.collapsed){
+    --bs-accordion-active-color: #d6b081;
+}
+
+.accordion-button:not(.collapsed) {
+color: #d6b081;
+}
+
+.list-group-item.active{
+    --bs-list-group-active-bg:#d6b081;
+    --bs-list-group-active-color:rgb(26, 25, 25);
+    --bs-list-group-active-border-color:grey;
+}
+
+.list-group{
+    --bs-list-group-active-bg: #d6b081;
+    --bs-list-group-active-color:grey;
+}
+
+.accordion-button:not(.collapsed)::after{
+    filter: brightness(60%) invert(100%);
+}
+
+.accordion-button.collapsed::after{
+    filter: brightness(0%) invert(100%);
+}

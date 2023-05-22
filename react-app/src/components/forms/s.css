@@ -1,0 +1,19 @@
+.range-slider {
+    margin: 20px;
+  }
+  
+  .slider-track {
+    height: 4px;
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 2px;
+  }
+  
+  .slider-thumb {
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    outline: none;
+  }

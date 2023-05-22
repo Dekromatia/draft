@@ -1,5 +1,68 @@
 version: "3.3"
-# services:
+
+services:
+  flask-api:
+    container_name: flask-api
+    build:
+      context: ./flask-api/
+      dockerfile: Dockerfile.flask-api
+    volumes:
+      - ./flask-api/:/app
+    ports:
+      - 8000:8000
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/amph_stamp_db'
+    depends_on:
+      - db
+
+  db:
+    container_name: postgres
+    image: postgres:15.2-alpine
+    # restart: always
+    volumes:
+        - postgres_data:/var/lib/postgresql/data/
+        - ./postgres/stamp_db.sql:/docker-entrypoint-initdb.d/stamp_db.sql
+        # возможно db надо заменить на postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=amph_stamp_db
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/amph_stamp_db
+    ports:
+      - '54321:5432'
+  # --no-ansi
+
+  react-app:
+    container_name: react-app
+    build:
+      context: ./react-app/
+      dockerfile: Dockerfile.react-app
+    volumes:
+      # - ./react-app/:/app
+      - ./react-app/src:/app/src
+      - ./react-app/public:/app/public
+      # - ./react-app/node_modules:/app/node_modules
+      - ./react-app/package.json:/app/package.json
+    ports:
+      - 3000:3000
+    environment:
+      # - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    # restart: always
+    command: npm start
+
+volumes:
+  postgres_data:
+    driver: local
+  node-modules:
+
+    # depends_on:
+    #   - flask-api
+    # stdin_open: true
+    # tty: true
+    #for -it flag in docker run
+
+    # services:
 #   web:
 #     build: ./web/
 #     command: python manage.py run -h 0.0.0.0
@@ -9,30 +72,20 @@ version: "3.3"
 #       - 8000:8000
 #     env_file:
 #       - ./.env.dev
-services:
-  web:
-    build:
-      context: ./web/
-      dockerfile: Dockerfile.web
-    container_name: web_app
-    volumes:
-      - ./web/:/app
-    ports:
-      - 8000:8000
-  db:
-    image: postgres:15.2-alpine
-    volumes:
-        - postgres_data:/var/lib/postgresql/data/
-        - ./postgres/stamp_db.sql:/docker-entrypoint-initdb.d/stamp_db.sql
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=amph_stamp_db
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/amph_stamp_db
-    ports:
-      - '54321:5432'
-    container_name: postgres
 
-volumes:
-  postgres_data:
-    driver: local
+    # react-front:
+  #   container_name: react-front
+  #   build:
+  #     context: ./react-front
+  #     dockerfile: Dockerfile.front
+  #   volumes:
+  #     - './react-front:/usr/src/app'
+  #     - '/usr/src/app/node_modules'
+  #   ports:
+  #     - '3000:3000'
+  #   depends_on:
+  #     - "flask-api"
+  #   environment:
+  #     - NODE_ENV=development
+  #     - CHOKIDAR_USEPOLLING=true
+  #     - HOST_URL=http://192.168.99.100:8000

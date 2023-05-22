@@ -1,0 +1,10 @@
+/* темные строки через одну в */
+.table-row:nth-child(even) {
+  background-color: #191919;
+}
+
+
+.table-row {
+  height: 50px;
+  width: 100%;
+}

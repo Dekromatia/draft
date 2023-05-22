@@ -1,0 +1,42 @@
+    // get SelectedItem() {
+    //     return this._selectedItem;
+    // }
+
+    // const store = new Store();
+
+// export default class StampStore {
+//   sites = [];
+//   manufacts = [];
+//   artifacts = [];
+
+//   constructor() {
+//     makeAutoObservable(this);
+//   }
+
+// export default class StampStore {
+//     constructor() {
+//         this._sitess = [];
+//         this._manufactss = [];
+//         this._artifactss = [];
+//         makeAutoObservable(this);
+//     }
+
+
+
+//     async fetchSites() {
+//         const response = await fetch('/get_sites');
+//         const data = await response.json();
+//         this.sites = data;
+//     }
+
+//     async fetchManufacts() {
+//         const response = await fetch('/get_manufacts');
+//         const data = await response.json();
+//         this.manufacts = data;
+//     }
+
+//     async fetchArtifacts() {
+//         const response = await fetch('/get_artifacts');
+//         const data = await response.json();
+//         this.artifacts = data;
+//     };

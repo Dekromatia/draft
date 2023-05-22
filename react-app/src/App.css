@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@300;600&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Commissioner', sans-serif;
+  breakpoints:'xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs';
+  minBreakpoint:"xxs"; 
+  /* color:#fcfcdb; */
+}
+
+
+
+.App {
+  /* background: black; */
+  /* background: #0f0f0f; */
+  color:#fdf0f0ec;
+  /* font-family: 'Commissioner', sans-serif; */
+  /* font-weight:300; */
+  margin: 0px 0px;
+  /* color: #212529ab; */
+}
+
+.modal-content {
+  background-color: transparent;
+  border: none;
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.full-image-modal .modal-content {
+  background-color: transparent;
+  border: none;
+}
+
+.full-image-modal .modal-body {
+  padding: 0;
+}
+
+.header {
+  background-color:transparent;
+}
+
+.bold {
+  font-weight: bold;
+}
+/* ДЛЯ ManufactCenterList */
+.active {
+  background-color: #007bff;
+  color: #fff;
+  /* cursor: pointer; */
+}
+
+.item-text {
+  user-select: none;
+  /* cursor: pointer; */
+}
+
+
+
+
+/* .underlined {
+  text-decoration: underline;
+} */
+
+/* .accordion{
+  --bs-accordion-bg:grey;
+  --bs-accordion-btn-bg: grey;
+} */
+
+/* .accordion-item{
+  background-color:grey;
+  border: grey;
+} */
+
+/* .accordion-button{
+  color:grey;
+}
+
+.accordion-button:not(.collapsed){
+  color:aqua;
+} */
+
+
+
+/* header .logo {
+  font-weight: 600;
+  font-size: 50px;
+} */
+  
+/* .App { */
+  /* text-align: center; */
+  /* background-color: #0f0f0f;
+  min-height: 100vh;
+  color: #fcfcdb;
+  padding: 20px;
+} */
+
+
+/* .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+} */
+
+/* .App-link {
+  color: #61dafb;
+} */
+

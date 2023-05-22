@@ -1,0 +1,150 @@
+artif_depository:
+artif_g:
+artif_position:
+artif_preservation:
+artifact_id:
+axis_large:
+axis_small:
+camera:Sony
+content_type:
+date_early:
+date_late:
+date_text:
+depository_id:
+emblem:
+fabric_name:
+field_id:
+finkelstein:
+frame_count:
+garlan:
+glink1000px:
+glink300px:
+id:
+leader_exc:
+lens:
+magist_name:
+manufact_center:
+manufact_id:
+manufact_latitude:
+manufact_longitude:
+model_date:
+model_id:
+model_link:
+model_process:
+munsell_chroma:
+munsell_code:
+munsell_hue:
+munsell_name:
+munsell_value:
+origin_type:
+polygon_count:
+polygon_size:
+polygon_sm:
+relief_type:
+shape_type:
+site_id:
+site_latitude:
+site_longitude:
+site_name:
+stamp_comments:
+stamp_id:361
+stamp_legend:
+stamp_legend_comment:
+stamp_position:
+stamp_preservation:
+stamp_preservation_comm:
+xlink300px:
+year_exc:
+zlink1000px:
+zlink300px:
+
+
+  <Row><h4>Характеристики</h4></Row>
+        <Row className='d-flex flex-column m-5'>
+          {Object.keys(model).map((key) => (
+            (key !== 'content_type' && key !== 'model_link' && key !== 'stamp_id') && (
+              <Row key={key} className="table-row">
+                <Col>
+                  {key === 'model_id' ? 'Шифр' :
+                    key === 'camera' ? 'Камера' :
+                      key === 'lens' ? 'Объектив' :
+                        key === 'frame_count' ? 'Кол-во снимков' :
+                          key === 'polygon_count' ? 'Кол-во полигонов' :
+                            key === 'polygon_sm' ? 'Детальность' :
+                              key === 'polygon_size' ? 'Дискретность' :
+                                key === 'model_process' ? 'Способ формирования' :
+                                  key === 'model_date' ? 'Дата' :
+                                    key}
+                </Col>
+                <Col>{model[key]}</Col>
+              </Row>
+            )
+          ))}
+        </Row>
+
+
+site_name: [], leader_exc: [], unit_exc: [],
+    year_exc: [], artif_position: [], field_id: [],
+    artif_depository: [], depository_id: [],
+    artif_g: [], description: [], artif_preservation: [],
+    munsell_hue: [], munsell_value: [], munsell_chroma: [], 
+    munsell_code: [], munsell_name: []
+
+model_id: [], stamp_position: [], emblem: [], stamp_preservation: [],
+    i manufact_center: [], magist_name: [], fabric_name: [], date_text: [],
+    relief_type: [], content_type: [], shape_type: [], origin_type: [],
+    axis_large: [], axis_small: [],
+    finkelstein: [], garlan: [],
+    xlink300px: '', xlink1000px: '', zlink1000px: '', zlink300px: '',
+    glink1000px: '', glink300px: ''
+
+
+                <p>Археологический памятник: {item.site_name}</p>
+
+                <h5 className="underlined">Раскопки</h5>
+                <p>руководитель: {item.leader_exc}</p>
+                <p>организация: {item.unit_exc}</p>
+                <p>год раскопок: {item.year_exc}</p>
+                <p>место находки: {item.artif_position}</p>
+                <p>полевой шифр: {item.field_id}</p>
+                
+                <h5 className="underlined">Хранение</h5>
+                <p>место: {item.artif_depository}</p>
+                <p>инвентарный номер: {item.depository_id}</p>
+                <h5 className="underlined">Артефакт</h5>
+                <p>предмет: {item.artif_g}</p>
+                {/* <p>описание: {item.description}</p> */}
+                <p>сохранность: {item.artif_preservation}</p>
+                <h5 className="underlined">Цвет</h5>
+                <p>тон: {item.munsell_hue}</p>
+                <p>значение: {item.munsell_value}</p>
+                <p>хром: {item.munsell_chroma}</p>
+                <p>код по Манселлу: {item.munsell_code}</p>
+                <p>название по Манселлу: {item.munsell_name}</p>
+
+                колонка 2
+
+                <p>Идентификатор клейма: {item.model_id}</p>
+
+                <p>расположние: {item.stamp_position}</p>
+                <p>эмблема: {item.emblem}</p>
+                <p>сохранность: {item.stamp_preservation}</p>
+
+                <p>центр производства: {item.manufact_center}</p>
+                <p>магистрант: {item.magist_name}</p>
+                <p>фабрикант: {item.fabric_name}</p>
+                <p>датировка: {item.date_text}</p>
+
+                <h5 className="underlined">Тип по:</h5>
+                <p>рельефу: {item.relief_type}</p>
+                <p>содержанию: {item.content_type}</p>
+                <p>форме:{item.shape_type}</p>
+                <p>происхождению: {item.origin_type}</p>
+
+                <h5 className="underlined">Размер клейма:</h5>
+                <p>по большой оси: {item.axis_large}</p>
+                <p>по малой оси: {item.axis_small}</p>
+
+                <h5 className="underlined">Xронологическая группа:</h5>
+                <p>по Финкельштейну:{item.finkelstein}</p>
+                <p>по Гарлану:{item.garlan}</p>

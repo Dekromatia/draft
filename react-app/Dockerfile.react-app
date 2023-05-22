@@ -1,0 +1,42 @@
+FROM node
+
+WORKDIR /app
+
+# ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
+
+
+RUN npm install
+RUN npm install react-scripts
+RUN npm install bootstrap react-bootstrap react-bootstrap-range-slider
+RUN npm install axios
+RUN npm install react-dom react-router-dom
+RUN npm install mobx mobx-react-lite
+RUN npm install redux 
+RUN npm install react-devtools
+RUN npm install jwt-decode
+RUN npm install rc-slider
+RUN npm install react-range
+
+# RUN npm install babylonjs
+# RUN npm install three 
+# RUN npm install react-three-fiber 
+# RUN npm install @react-three/fiber 
+# RUN npm install @react-three/drei
+
+RUN npm install leaflet react-leaflet 
+# d3-scale d3-scale-chromatic d3-fetch
+
+
+#возможно надо  RUN npbootstrap install
+# RUN npm update
+# RUN npm install nodemon --save-dev
+
+COPY . /app
+
+EXPOSE 3000
+CMD ["npm", "start"]
+
+# CMD ["nodemon", "--exec", "npm", "start"]
